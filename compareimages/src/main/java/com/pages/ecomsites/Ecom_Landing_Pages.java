@@ -149,15 +149,19 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		
 		
+
+		
+		
+		
 		for (WebElement image : images) {
-			if( image.getAttribute("alt") != null && image.getAttribute("src") != null) {
-				this.amazonimagesrc.put(image.getAttribute("alt"),image.getAttribute("src"));
+			if(image.getAccessibleName()!=null && image.getAttribute("src")!=null ) {
 				
+			
 				
+			 this.amazonimagesrc.put(image.getAccessibleName(), image.getAttribute("src"));
 			}
-			
-			
 		}
+		
 		
 		
 		System.out.println("Number of images having name, src not null :"+""+getAmazonSet().size());
@@ -288,13 +292,12 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 			
 		List<WebElement> images = getDriver().findElements(By.tagName("img"));
-		
-		
-		
+			
 		for (WebElement image : images) {
-			if(image.getAttribute("alt") != null && image.getAttribute("src") != null) {
+			if(image.getAccessibleName()!=null && image.getAttribute("src")!=null && image.getAccessibleName()!="" && image.getAttribute("src")!="" ) {
+			
 				
-			 this.flipkartimagesrc.put(image.getAttribute("alt"), image.getAttribute("src"));
+			 this.flipkartimagesrc.put(image.getAccessibleName(), image.getAttribute("src"));
 			}
 		}
 		
@@ -305,21 +308,19 @@ public class Ecom_Landing_Pages extends Drivers{
 	
 	public void imageComparision() {
 		
-		int commonimages =0 ;
+		
 		HashSet<String> common= new HashSet<>();
 		if(amazonimagesrc.equals(flipkartimagesrc)) {
 					for (String image : amazonimagesrc.keySet()  ) {
 					common.add(image);
-					System.out.println(common);
-					commonimages++;
+					
 				}
 			
 			}
 		
 		
-		System.out.println("Number of common images between Amazon and Flipkart :"+""+commonimages);
-		
-		
+		System.out.println("Number of common images between Amazon and Flipkart :"+""+common.size());
+		System.out.println("Common images between Amazon and Flipkart"+":"+common);
 	}
 }
 
