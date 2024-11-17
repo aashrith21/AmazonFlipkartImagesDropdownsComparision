@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -33,47 +34,10 @@ import com.utilities.drivers.Drivers;
 public class Ecom_Landing_Pages extends Drivers{
 	
 
-	private int imagescount;
-	private HashMap<String,String> flipkartimagesrc = new HashMap<>();
-	private HashMap<String,String> amazonimagesrc = new HashMap<>();
 	
+	public HashSet<String> flipkartimagesrc = new HashSet<>();
 	
-	
-	// Getter for Image Count
-	
-	public int getimagecount() {
-		
-		return imagescount;
-	
-	}
-	
-	public HashMap<String,String> getFlipkartSet() {
-		return flipkartimagesrc;
-	}
-	
-	public HashMap<String,String> getAmazonSet() {
-		return amazonimagesrc;
-	}
-	
-	// Setting the count of Dropdowns and Images
-	
-	public  void setImagesCount() {
-		
-		// Waiter for image tag
-		 
-		WebDriverWait imagewait = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
-		imagewait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("img")));
-		
-		// Finding the elements having image tag
-		
-		List<WebElement> images = getDriver().findElements(By.tagName("img"));
-		
-		// Setting the counts to respective variables
-		
-		this.imagescount = images.size();
-		
-		
-	}
+	public HashSet<String> amazonimagesrc = new HashSet<>();
 	
 	
 	
@@ -135,38 +99,35 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		
 		
-		// Calling setdropdownandImagesCount
-		setImagesCount();	
+		
 		
 		// Printing the dropdown and image counts	
 		
 		int totaldropdowncount = dropdowns.size()+endropdown.size()+signindropdown.size()+searchbox.size();
 		System.out.println("Number of dropdowns present in Amazon homepage:"+totaldropdowncount);
-		System.out.println("Number of images in Amazon homepage:"+getimagecount());
+		
 		
 		
 		List<WebElement> images = getDriver().findElements(By.tagName("img"));
 		
-		
-		
-
-		
-		
-		
-		for (WebElement image : images) {
-			if(image.getAccessibleName()!=null && image.getAttribute("src")!=null ) {
+		 
+		 for (WebElement image : images) {
+		 
+			if(image.getAttribute("src")!=null ) {
 				
 			
-				
-			 this.amazonimagesrc.put(image.getAccessibleName(), image.getAttribute("src"));
+			 this.amazonimagesrc.add( image.getAttribute("src"));
 			}
+			
 		}
 		
 		
 		
-		System.out.println("Number of images having name, src not null :"+""+getAmazonSet().size());
+		 System.out.println("Number of images in Amazon Home Page :"+""+amazonimagesrc.size());
+		 
 	}
-	
+		
+		
 	
 	public void flipkartLandingPage() throws IOException {
 		// TODO Auto-generated constructor stub
@@ -278,49 +239,54 @@ public class Ecom_Landing_Pages extends Drivers{
 								
 		int search_count = getDriver().findElements(By.xpath("//div[@class='_2SmNnR']")).size();
 				
-		
-		
-	
-		setImagesCount();
-		
 		// Printing the dropdown and image counts
 		
 		int totaldropdowncount = breadcrumb_count.size()+login_count.size()+two_wheelers_count.size()+beauty_count.size()+home_count.size()+electronics_count.size()+fashion_count.size()+search_count;		
 		System.out.println("Number of dropdowns present in Flipkart homepage:"+totaldropdowncount);
-		System.out.println("Number of images in Flipkart homepage:"+getimagecount());
 		
-		
-			
 		List<WebElement> images = getDriver().findElements(By.tagName("img"));
-			
+		
 		for (WebElement image : images) {
-			if(image.getAccessibleName()!=null && image.getAttribute("src")!=null && image.getAccessibleName()!="" && image.getAttribute("src")!="" ) {
+			if(image.getAttribute("src")!=null) {
 			
 				
-			 this.flipkartimagesrc.put(image.getAccessibleName(), image.getAttribute("src"));
+			 this.flipkartimagesrc.add(image.getAttribute("src"));
 			}
+			
 		}
 		
 		
-		System.out.println("Number of images having name, src not null :"+""+getFlipkartSet().size());
-	
+		System.out.println("Number of images in Flipkart Homepage :"+""+flipkartimagesrc.size());
+		
 	}
+	
+	
 	
 	public void imageComparision() {
 		
 		
+		
 		HashSet<String> common= new HashSet<>();
-		if(amazonimagesrc.equals(flipkartimagesrc)) {
-					for (String image : amazonimagesrc.keySet()  ) {
-					common.add(image);
+		 
+		//if(amazonimagesrc.equals(flipkartimagesrc)) {
+		for (String amazonimage : amazonimagesrc  ) {
+						
+							for(String flipkartimage : flipkartimagesrc) {
+								
+								if(amazonimage == flipkartimage) {
+									common.add(amazonimage);
+									
+								}
+									
+							}
 					
 				}
 			
-			}
-		
+	   
+	
 		
 		System.out.println("Number of common images between Amazon and Flipkart :"+""+common.size());
-		System.out.println("Common images between Amazon and Flipkart"+":"+common);
+		
 	}
 }
 
