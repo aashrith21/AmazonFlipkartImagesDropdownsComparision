@@ -5,8 +5,7 @@
     <classes>
       <class name="com.compareimage.tests.Compare_Images_Test">
         <methods>
-          <include name="closeBrowser"/>
-          <include name="compareImagesDropdownsTest"/>
+          <include name="compareImagesDropdownsMethod2"/>
         </methods>
       </class> <!-- com.compareimage.tests.Compare_Images_Test -->
     </classes>

@@ -33,6 +33,10 @@ import com.utilities.drivers.Drivers;
 
 public class Ecom_Landing_Pages extends Drivers{
 	
+	public Ecom_Landing_Pages() {
+		//setDriver("Edge");
+	}
+	
 	//Amazon locators
 	
 	public String select_dropdown_id    = "searchDropdownBox";
@@ -57,61 +61,61 @@ public class Ecom_Landing_Pages extends Drivers{
 	
 	
 	
-	public void amazonLandingPage() {
+	public void amazonLandingPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
 		// Navigation to Amazon
 		
-		getDriver().get("http://www.amazon.in/");
+		driver.get("http://www.amazon.in/");
 		
 		// Maximizing Browser window
 		
-		getDriver().manage().window().maximize();
+		driver.manage().window().maximize();
 		
 		// Waiter for select tag
 		
-		WebDriverWait dropdownwait = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait dropdownwait = new WebDriverWait(driver,Duration.ofMinutes(1));
 		dropdownwait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id(select_dropdown_id)));
 				
-		List<WebElement> dropdowns = getDriver().findElements(By.id(select_dropdown_id));
-		getDriver().findElement(By.id(select_dropdown_id)).click();
+		List<WebElement> dropdowns = driver.findElements(By.id(select_dropdown_id));
+		driver.findElement(By.id(select_dropdown_id)).click();
 		
 		// Fetching the count for Search dropdown
 		
-		WebDriverWait search_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait search_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		search_waiter.until(ExpectedConditions.elementToBeClickable(By.id(searchbox_dropdown_id)));
 		
-		getDriver().findElement(By.id(searchbox_dropdown_id)).sendKeys("Mobiles");
-		List<WebElement> searchbox = getDriver().findElements(By.id(searchbox_dropdown_id));
-		getDriver().findElement(By.xpath("//div[@class='left-pane-results-container']"));
+		driver.findElement(By.id(searchbox_dropdown_id)).sendKeys("Mobiles");
+		List<WebElement> searchbox = driver.findElements(By.id(searchbox_dropdown_id));
+		driver.findElement(By.xpath("//div[@class='left-pane-results-container']"));
 		
 		
 		
 		// Waiter for EN division
 		
-		WebDriverWait enwaiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait enwaiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		enwaiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(EN_dropdown_xpath)));
 		
-		Actions hover_en = new Actions(getDriver());
+		Actions hover_en = new Actions(driver);
 		
-		hover_en.moveToElement(getDriver().findElement(By.xpath(EN_dropdown_xpath))).perform();
+		hover_en.moveToElement(driver.findElement(By.xpath(EN_dropdown_xpath))).perform();
 						
 		// Finding the elements having EN text
 				
-		List<WebElement> endropdown = getDriver().findElements(By.xpath(EN_dropdown_xpath));
+		List<WebElement> endropdown = driver.findElements(By.xpath(EN_dropdown_xpath));
 		
 		// Waiter for Hello signin division
 		
-		WebDriverWait signinwaiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait signinwaiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		signinwaiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(HelloSignIn_dropdown_xpath)));
 				
-		Actions hover_signin = new Actions(getDriver());
+		Actions hover_signin = new Actions(driver);
 				
-		hover_signin.moveToElement(getDriver().findElement(By.xpath(HelloSignIn_dropdown_xpath))).perform();
+		hover_signin.moveToElement(driver.findElement(By.xpath(HelloSignIn_dropdown_xpath))).perform();
 								
 		// Finding the elements having Hello Signin text
 						
-		List<WebElement> signindropdown = getDriver().findElements(By.xpath(HelloSignIn_dropdown_xpath));
+		List<WebElement> signindropdown = driver.findElements(By.xpath(HelloSignIn_dropdown_xpath));
 				
 		// Printing the dropdown and image counts	
 		
@@ -120,7 +124,7 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		
 		
-		List<WebElement> images = getDriver().findElements(By.tagName("img"));
+		List<WebElement> images = driver.findElements(By.tagName("img"));
 		
 		 
 		 for (WebElement image : images) {
@@ -141,122 +145,126 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		
 	
-	public void flipkartLandingPage() throws IOException {
+	
+
+
+
+	public void flipkartLandingPage(WebDriver driver) throws IOException {
 		// TODO Auto-generated constructor stub
 		
 		// Navigation to Flipkart
 		
-		getDriver().get("https://www.flipkart.com/");
+		driver.get("https://www.flipkart.com/");
 		
 		// Maximizing Browser window
 		
-		getDriver().manage().window().maximize();
+		driver.manage().window().maximize();
 		
 		
 		// Fetching the count for breadcrumb
 		
-		WebDriverWait breadcrumb_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait breadcrumb_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		breadcrumb_waiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(breadcrumb_dropdown_xpath)));
 		
-		Actions hover_breadcrumb = new Actions(getDriver());
+		Actions hover_breadcrumb = new Actions(driver);
 		
-		hover_breadcrumb.moveToElement(getDriver().findElement(By.xpath(breadcrumb_dropdown_xpath))).perform();
+		hover_breadcrumb.moveToElement(driver.findElement(By.xpath(breadcrumb_dropdown_xpath))).perform();
 		
-		List<WebElement> breadcrumb_count = getDriver().findElements(By.xpath(breadcrumb_dropdown_xpath));
+		List<WebElement> breadcrumb_count = driver.findElements(By.xpath(breadcrumb_dropdown_xpath));
 		
 		
 		// Fetching the count for Login dropdown
 		
-		WebDriverWait login_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait login_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		login_waiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(login_dropdown_xpath)));
 		
-		Actions hover_Login = new Actions(getDriver());
+		Actions hover_Login = new Actions(driver);
 		
-		hover_Login.moveToElement(getDriver().findElement(By.xpath(login_dropdown_xpath))).perform();
+		hover_Login.moveToElement(driver.findElement(By.xpath(login_dropdown_xpath))).perform();
 		
-		List<WebElement> login_count = getDriver().findElements(By.xpath(login_dropdown_xpath));
+		List<WebElement> login_count = driver.findElements(By.xpath(login_dropdown_xpath));
 		
 		
 		// Fetching the count for Two Wheelers dropdown
 		
-		WebDriverWait two_wheelers_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait two_wheelers_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		two_wheelers_waiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(two_wheelers_dropdown_xpath)));
 				
-		Actions hover_two_wheelers = new Actions(getDriver());
+		Actions hover_two_wheelers = new Actions(driver);
 				
-		hover_two_wheelers.moveToElement(getDriver().findElement(By.xpath(two_wheelers_dropdown_xpath))).perform();
+		hover_two_wheelers.moveToElement(driver.findElement(By.xpath(two_wheelers_dropdown_xpath))).perform();
 				
-		List<WebElement> two_wheelers_count = getDriver().findElements(By.xpath(two_wheelers_dropdown_xpath));
+		List<WebElement> two_wheelers_count = driver.findElements(By.xpath(two_wheelers_dropdown_xpath));
 			
 		// Fetching the count for Beauty, Toys, Category dropdown
 		
-		WebDriverWait beauty_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait beauty_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		beauty_waiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(beauty_dropdown_xpath)));
 						
-		Actions hover_beauty = new Actions(getDriver());
+		Actions hover_beauty = new Actions(driver);
 						
-		hover_beauty.moveToElement(getDriver().findElement(By.xpath(beauty_dropdown_xpath))).perform();
+		hover_beauty.moveToElement(driver.findElement(By.xpath(beauty_dropdown_xpath))).perform();
 						
-		List<WebElement> beauty_count = getDriver().findElements(By.xpath(beauty_dropdown_xpath));
+		List<WebElement> beauty_count = driver.findElements(By.xpath(beauty_dropdown_xpath));
 		
 		// Fetching the count for Home & Furniture dropdown
 		
-		WebDriverWait home_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait home_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		home_waiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(home_furniture_xpath)));
 						
-		Actions hover_home = new Actions(getDriver());
+		Actions hover_home = new Actions(driver);
 						
-		hover_home.moveToElement(getDriver().findElement(By.xpath(home_furniture_xpath))).perform();
+		hover_home.moveToElement(driver.findElement(By.xpath(home_furniture_xpath))).perform();
 						
-		List<WebElement> home_count = getDriver().findElements(By.xpath(home_furniture_xpath));
+		List<WebElement> home_count = driver.findElements(By.xpath(home_furniture_xpath));
 		
 		// Fetching the count for Electronics dropdown
 		
-		WebDriverWait electronics_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait electronics_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		electronics_waiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(electronics_xpath)));
 						
-		Actions hover_electronics = new Actions(getDriver());
+		Actions hover_electronics = new Actions(driver);
 						
-		hover_electronics.moveToElement(getDriver().findElement(By.xpath(electronics_xpath))).perform();
+		hover_electronics.moveToElement(driver.findElement(By.xpath(electronics_xpath))).perform();
 						
-		List<WebElement> electronics_count = getDriver().findElements(By.xpath(electronics_xpath));
+		List<WebElement> electronics_count = driver.findElements(By.xpath(electronics_xpath));
 		
 		// Fetching the count for Fashion dropdown
 		
-		WebDriverWait fashion_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait fashion_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		fashion_waiter.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(fashion_xpath)));
 								
-		Actions hover_fashion = new Actions(getDriver());
+		Actions hover_fashion = new Actions(driver);
 								
-		hover_fashion.moveToElement(getDriver().findElement(By.xpath(fashion_xpath))).perform();
+		hover_fashion.moveToElement(driver.findElement(By.xpath(fashion_xpath))).perform();
 								
-		List<WebElement> fashion_count = getDriver().findElements(By.xpath(fashion_xpath));
+		List<WebElement> fashion_count = driver.findElements(By.xpath(fashion_xpath));
 		
 		// Fetching the count for Search dropdown
 		
-		WebDriverWait search_waiter = new WebDriverWait(getDriver(),Duration.ofMinutes(1));
+		WebDriverWait search_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
 		search_waiter.until(ExpectedConditions.elementToBeClickable(By.xpath(search_box_xpath)));
-		WebElement searchbox = getDriver().findElement(By.xpath(search_box_xpath));
+		WebElement searchbox = driver.findElement(By.xpath(search_box_xpath));
 		
-		JavascriptExecutor jsexecutor = (JavascriptExecutor) getDriver();
+		JavascriptExecutor jsexecutor = (JavascriptExecutor) driver;
 		jsexecutor.executeScript("arguments[0].click()", searchbox);
 		searchbox.sendKeys(" ",Keys.BACK_SPACE);
 		
 		
 		
 								
-		Actions hover_search = new Actions(getDriver());
+		Actions hover_search = new Actions(driver);
 								
-		hover_search.moveToElement(getDriver().findElement(By.xpath(search_dropdown_xpath))).perform();
+		hover_search.moveToElement(driver.findElement(By.xpath(search_dropdown_xpath))).perform();
 								
-		int search_count = getDriver().findElements(By.xpath(search_dropdown_xpath)).size();
+		int search_count = driver.findElements(By.xpath(search_dropdown_xpath)).size();
 				
 		// Printing the dropdown and image counts
 		
 		int totaldropdowncount = breadcrumb_count.size()+login_count.size()+two_wheelers_count.size()+beauty_count.size()+home_count.size()+electronics_count.size()+fashion_count.size()+search_count;		
 		System.out.println("Number of dropdowns present in Flipkart homepage:"+totaldropdowncount);
 		
-		List<WebElement> images = getDriver().findElements(By.tagName("img"));
+		List<WebElement> images = driver.findElements(By.tagName("img"));
 		
 		for (WebElement image : images) {
 			if(image.getAttribute("src")!=null) {
@@ -274,7 +282,7 @@ public class Ecom_Landing_Pages extends Drivers{
 	
 	
 	
-	public void imageComparision() {
+	public void imageComparision(WebDriver webDriver) {
 		
 		
 		
@@ -300,10 +308,22 @@ public class Ecom_Landing_Pages extends Drivers{
 		System.out.println("Number of common images between Amazon and Flipkart :"+""+common.size());
 		System.out.println("Common images between Amazon and Flipkart           :"+""+common);
 	}
-	
-	public void closeBrowser() {
-		getDriver().close();
+
+
+
+
+
+
+
+	public void closeBrowser(WebDriver driver) {
+		// TODO Auto-generated method stub
+		//driver.close();
 	}
+	
+	
+
+
+
 	
 }
 
