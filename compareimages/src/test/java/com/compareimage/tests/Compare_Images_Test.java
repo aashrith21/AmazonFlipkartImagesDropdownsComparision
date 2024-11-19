@@ -4,9 +4,11 @@ package com.compareimage.tests;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestNGListener;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -23,9 +25,14 @@ import com.utilities.drivers.Drivers;
 
 
 
-public class Compare_Images_Test extends Drivers {
+public class Compare_Images_Test extends Drivers  {
 		
 	Ecom_Landing_Pages ecom = new Ecom_Landing_Pages();
+	public HashSet<String> common= new HashSet<>();
+	private int countofamazonimages;
+	private int countofamazondropdowns;
+	private int countofflipkartdropdowns;
+	private int countofflipkartimages;
 	
   @Test(retryAnalyzer=Retry.class)
 	public void compareImagesDropdownsMethod1() throws IOException  {
@@ -54,8 +61,8 @@ public class Compare_Images_Test extends Drivers {
 	// Fetching count by respective websites
 
 	amazon.launchAmazonHomepage(driver);
-	amazon.printAmazonDropdownCount(driver);
-	amazon.printnoofImages(driver);
+	setCountofamazondropdowns(amazon.printAmazonDropdownCount(driver));
+	setCountofamazonimages(amazon.printnoofImages(driver));
 	amazon.closeBrowser(driver);
 	
 	
@@ -64,12 +71,12 @@ public class Compare_Images_Test extends Drivers {
 	Flipkart_Home_Page flipkart = new Flipkart_Home_Page();
 	
 	flipkart.launchFlipkartHomepage(driver);
-	flipkart.printFlipkartDropdownscount(driver);
-	flipkart.printNoofImages(driver);
+	setCountofflipkartdropdowns(flipkart.printFlipkartDropdownscount(driver));
+	setCountofflipkartimages(flipkart.printNoofImages(driver));
 	flipkart.closeBrowser(driver);
 	
 		
-	HashSet<String> common= new HashSet<>();
+	
 		 
 		//if(amazonimagesrc.equals(flipkartimagesrc)) {
 		for (String amazonimage : amazon.amazonimagesrc  ) {
@@ -77,7 +84,7 @@ public class Compare_Images_Test extends Drivers {
 							for(String flipkartimage : flipkart.flipkartimagesrc) {
 								
 								if(amazonimage == flipkartimage) {
-									common.add(amazonimage);
+									this.common.add(amazonimage);
 									
 								}
 									
@@ -91,11 +98,56 @@ public class Compare_Images_Test extends Drivers {
 		System.out.println("Number of common images between Amazon and Flipkart :"+""+common.size());
 		System.out.println("Common images between Amazon and Flipkart           :"+""+common);
 		
+  }
+
+
+   public int getCountofamazondropdowns() {
+		return countofamazondropdowns;
 	}
+
   
+
+	public void setCountofamazondropdowns(int countofamazondropdowns) {
+		this.countofamazondropdowns = countofamazondropdowns;
+	}
+
+
+
+	public int getCountofamazonimages() {
+		return countofamazonimages;
+	}
+
+
+
+	public void setCountofamazonimages(int countofamazonimages) {
+		this.countofamazonimages = countofamazonimages;
+	}
+
+
+
+	public int getCountofflipkartdropdowns() {
+		return countofflipkartdropdowns;
+	}
+
+
+
+	public void setCountofflipkartdropdowns(int countofflipkartdropdowns) {
+		this.countofflipkartdropdowns = countofflipkartdropdowns;
+	}
+
+
+
+	public int getCountofflipkartimages() {
+		return countofflipkartimages;
+	}
+
+
+
+	public void setCountofflipkartimages(int countofflipkartimages) {
+		this.countofflipkartimages = countofflipkartimages;
+	}
+
   
   
 
-   
- 
 }

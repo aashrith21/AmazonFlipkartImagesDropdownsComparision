@@ -179,12 +179,13 @@ public class Flipkart_Home_Page extends Drivers {
 	return search_count.size();
 	}
 	
-	public void printFlipkartDropdownscount(WebDriver driver) {
+	public int printFlipkartDropdownscount(WebDriver driver) {
 		int totaldropdowncount = findBreadCrumbDropdown(driver)+findLoginDropdown(driver)+findTwoWheelersDropdown(driver)+findBeautyDropdown(driver)+findHomeFurnitureDropdown(driver)+findElectronicsDropdown(driver)+findFashionDropdown(driver)+findSearchDropdown(driver);		
 		System.out.println("Number of dropdowns present in Flipkart homepage:"+totaldropdowncount);
+		return totaldropdowncount;
 	}
 	
-	public void printNoofImages(WebDriver driver) {
+	public int printNoofImages(WebDriver driver) {
 		List<WebElement> images = driver.findElements(By.tagName("img"));
 		
 		for (WebElement image : images) {
@@ -198,6 +199,7 @@ public class Flipkart_Home_Page extends Drivers {
 		
 		
 		System.out.println("Number of images in Flipkart Homepage :"+""+flipkartimagesrc.size());
+		return flipkartimagesrc.size();
 	}
 	
 	public void closeBrowser(WebDriver driver) {

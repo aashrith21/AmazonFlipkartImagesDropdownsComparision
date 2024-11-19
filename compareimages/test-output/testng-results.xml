@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-19T18:37:40 IST" name="Suite" finished-at="2024-11-19T18:38:21 IST" duration-ms="41567">
+  <suite started-at="2024-11-19T22:38:51 IST" name="Suite" finished-at="2024-11-19T22:40:08 IST" duration-ms="76993">
     <groups>
     </groups>
-    <test started-at="2024-11-19T18:37:40 IST" name="DropDowns and Images Test" finished-at="2024-11-19T18:38:21 IST" duration-ms="41567">
+    <test started-at="2024-11-19T22:38:51 IST" name="DropDowns and Images Test" finished-at="2024-11-19T22:40:08 IST" duration-ms="76993">
       <class name="com.compareimage.tests.Compare_Images_Test">
-        <test-method is-config="true" signature="initializeDriver()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@1e461e41]" started-at="2024-11-19T18:37:40 IST" name="initializeDriver" finished-at="2024-11-19T18:37:45 IST" duration-ms="5685" status="PASS">
+        <test-method is-config="true" signature="initializeDriver()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@4b23c30a]" started-at="2024-11-19T22:38:51 IST" name="initializeDriver" finished-at="2024-11-19T22:38:56 IST" duration-ms="4316" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeDriver -->
-        <test-method signature="compareImagesDropdownsMethod1()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@1e461e41]" started-at="2024-11-19T18:37:45 IST" name="compareImagesDropdownsMethod1" finished-at="2024-11-19T18:38:02 IST" duration-ms="16877" status="PASS">
+        <test-method signature="compareImagesDropdownsMethod1()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@4b23c30a]" started-at="2024-11-19T22:38:56 IST" name="compareImagesDropdownsMethod1" finished-at="2024-11-19T22:39:33 IST" duration-ms="37192" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- compareImagesDropdownsMethod1 -->
-        <test-method is-config="true" signature="initializeDriver()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@1e461e41]" started-at="2024-11-19T18:38:02 IST" name="initializeDriver" finished-at="2024-11-19T18:38:06 IST" duration-ms="3783" status="PASS">
+        <test-method is-config="true" signature="initializeDriver()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@4b23c30a]" started-at="2024-11-19T22:39:33 IST" name="initializeDriver" finished-at="2024-11-19T22:39:41 IST" duration-ms="7878" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeDriver -->
-        <test-method signature="compareImagesDropdownsMethod2()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@1e461e41]" started-at="2024-11-19T18:38:06 IST" name="compareImagesDropdownsMethod2" finished-at="2024-11-19T18:38:21 IST" duration-ms="14754" status="PASS">
+        <test-method signature="compareImagesDropdownsMethod2()[pri:0, instance:com.compareimage.tests.Compare_Images_Test@4b23c30a]" started-at="2024-11-19T22:39:41 IST" name="compareImagesDropdownsMethod2" finished-at="2024-11-19T22:40:08 IST" duration-ms="26904" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- compareImagesDropdownsMethod2 -->

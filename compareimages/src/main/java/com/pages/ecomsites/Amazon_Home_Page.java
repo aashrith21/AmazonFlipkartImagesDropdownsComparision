@@ -100,17 +100,19 @@ public class Amazon_Home_Page extends Drivers {
 	return signindropdown.size();
 	}
 	
-	public void printAmazonDropdownCount(WebDriver driver) {
+	public int printAmazonDropdownCount(WebDriver driver) {
 	
 	// Printing the dropdown count in Amazon Homepage
 	
 		int totaldropdowncount = findDropdownWithSelectTag(driver)+findSearchboxDropdrown(driver)+findENDropDown(driver)+findHelloSignINDropDown(driver);
 		System.out.println("Number of Dropdowns present in Amazon homepage:"+totaldropdowncount);
 		
+		return totaldropdowncount;
+		
 		
 	}
 	
-	public void printnoofImages(WebDriver driver) {
+	public int printnoofImages(WebDriver driver) {
 		List<WebElement> images = driver.findElements(By.tagName("img"));
 		
 		 
@@ -125,6 +127,7 @@ public class Amazon_Home_Page extends Drivers {
 		}
 		
 		 System.out.println("Number of Images present in Amazon homepage:"+amazonimagesrc.size());
+		 return amazonimagesrc.size();
 	}
 	public void closeBrowser(WebDriver driver) {
 		//getDriver().close();
