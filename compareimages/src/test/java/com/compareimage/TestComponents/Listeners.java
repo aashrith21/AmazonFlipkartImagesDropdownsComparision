@@ -31,32 +31,50 @@ public class Listeners extends Compare_Images_Test implements ITestListener{
 		
 		
 		try {
-			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver")
-					.get(result.getInstance());
+			        int countofamazondropdowns =  result.getTestClass().getRealClass().getField("countofamazondropdowns").getInt(result.getInstance());
+					
+			        int countofamazonimages = (int) result.getTestClass().getRealClass().getField("countofamazonimages")
+											.get(result.getInstance());
+			        int countofflipkartdropdowns =(int) result.getTestClass().getRealClass().getField("countofflipkartdropdowns")
+					 						.get(result.getInstance());
+			        int countofflipkartimages = (int) result.getTestClass().getRealClass().getField("countofflipkartimages")
+					 						.get(result.getInstance());
+			        driver = (WebDriver) result.getTestClass().getRealClass().getField("driver")
+					 						.get(result.getInstance());
+					
 			if(result.getMethod().getMethodName() == "compareImagesDropdownsMethod1") {
-				test.assignAuthor("Aashrith");
-				test.addScreenCaptureFromPath(getScreenshot(result.getMethod().getMethodName(),driver));
-				
-				test.log(Status.PASS, "Test passed successfully");
-				test.log(Status.INFO,"Number of DropDowns present in Amazon homepage:"+getCountofamazondropdowns());
-				test.log(Status.INFO,"Number of Images present in Amazon homepage:"+getCountofamazonimages());
-				test.log(Status.INFO,"Number of DropDowns present in Flipkart homepage:"+getCountofflipkartdropdowns());
-				test.log(Status.INFO,"Number of Images present in Flipkart homepage:"+getCountofflipkartimages());
-				test.log(Status.INFO,"Number of common images between Amazon and Flipkart :"+""+common.size());
-				test.log(Status.INFO,"Common images between Amazon and Flipkart :"+common);
+				    test.assignAuthor("Aashrith");
+				    test.addScreenCaptureFromPath(getScreenshot(result.getMethod().getMethodName(),driver));
+				    test.log(Status.PASS, "Test passed successfully");
+				    test.log(Status.INFO,"Number of DropDowns present in Amazon homepage:"+countofamazondropdowns);
+				    test.log(Status.INFO,"Number of Images present in Amazon homepage:"+countofamazonimages);
+				    test.log(Status.INFO,"Number of DropDowns present in Flipkart homepage:"+countofflipkartdropdowns);
+				    test.log(Status.INFO,"Number of Images present in Flipkart homepage:"+countofflipkartimages);
+				    test.log(Status.INFO,"Number of common images between Amazon and Flipkart :"+""+common.size());
+				    test.log(Status.INFO,"Common images between Amazon and Flipkart :"+common);
 			}
 			else if (result.getMethod().getMethodName() == "compareImagesDropdownsMethod2") {
-				test.assignAuthor("Aashrith");
-				test.addScreenCaptureFromPath(getScreenshot(result.getMethod().getMethodName(),driver));
+				    int countofamazondropdowns2 =  (int) result.getTestClass().getRealClass().getField("countofamazondropdowns")
+						.get(result.getInstance());
+				    int countofamazonimages2 = (int) result.getTestClass().getRealClass().getField("countofamazonimages")
+						.get(result.getInstance());
+				    int countofflipkartdropdowns2 =(int) result.getTestClass().getRealClass().getField("countofflipkartdropdowns")
+						.get(result.getInstance());
+				    int countofflipkartimages2 = (int) result.getTestClass().getRealClass().getField("countofflipkartimages")
+						.get(result.getInstance());
+				    driver = (WebDriver) result.getTestClass().getRealClass().getField("driver")
+						.get(result.getInstance());
 				
-				test.log(Status.PASS, "Test passed successfully");
-				test.log(Status.INFO,"Number of DropDowns present in Amazon homepage:"+getCountofamazondropdowns());
-				test.log(Status.INFO,"Number of Images present in Amazon homepage:"+getCountofamazonimages());
-				test.log(Status.INFO,"Number of DropDowns present in Flipkart homepage:"+getCountofflipkartdropdowns());
-				test.log(Status.INFO,"Number of Images present in Flipkart homepage:"+getCountofflipkartimages());
-				test.log(Status.INFO,"Number of common images between Amazon and Flipkart :"+""+common.size());
-				test.log(Status.INFO,"Common images between Amazon and Flipkart :"+common);
-			}
+					test.assignAuthor("Aashrith");
+					test.addScreenCaptureFromPath(getScreenshot(result.getMethod().getMethodName(),driver));
+					test.log(Status.PASS, "Test passed successfully");
+					test.log(Status.INFO,"Number of DropDowns present in Amazon homepage:"+countofamazondropdowns2);
+					test.log(Status.INFO,"Number of Images present in Amazon homepage:"+countofamazonimages2);
+					test.log(Status.INFO,"Number of DropDowns present in Flipkart homepage:"+countofflipkartdropdowns2);
+					test.log(Status.INFO,"Number of Images present in Flipkart homepage:"+countofflipkartimages2);
+					test.log(Status.INFO,"Number of common images between Amazon and Flipkart :"+""+common.size());
+					test.log(Status.INFO,"Common images between Amazon and Flipkart :"+common);
+				}
 			
 			
 			

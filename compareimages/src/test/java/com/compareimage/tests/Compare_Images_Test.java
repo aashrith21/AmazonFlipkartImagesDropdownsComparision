@@ -29,18 +29,26 @@ public class Compare_Images_Test extends Drivers  {
 		
 	Ecom_Landing_Pages ecom = new Ecom_Landing_Pages();
 	public HashSet<String> common= new HashSet<>();
-	private int countofamazonimages;
-	private int countofamazondropdowns;
-	private int countofflipkartdropdowns;
-	private int countofflipkartimages;
+	public int countofamazondropdowns ;
+	public int countofamazonimages ;
+	public int countofflipkartdropdowns ;
+	public int countofflipkartimages ;
+	public int countofCommonimages ;
+	
 	
   @Test(retryAnalyzer=Retry.class)
 	public void compareImagesDropdownsMethod1() throws IOException  {
 	  
 	  driver = getDriver();
 	  ecom.amazonLandingPage(driver);
+	  
+	  this.countofamazondropdowns   = ecom.printAmazonDropdownCount(driver);
+	  this.countofamazonimages      = ecom.printAmazonImageCount(driver);
 	  ecom.flipkartLandingPage(driver);
-	  ecom.imageComparision(driver);
+	  this.countofflipkartdropdowns = ecom.getFlipkartDropdownCount(driver);
+	  this.countofflipkartimages    = ecom.getFlipkartImageCount(driver);
+	  this.countofCommonimages      = ecom.imageComparision(driver).size();
+	  this.common                   = ecom.imageComparision(driver);  
 	  ecom.closeBrowser(driver);
 		
 	}
@@ -50,7 +58,10 @@ public class Compare_Images_Test extends Drivers  {
   @Test(retryAnalyzer=Retry.class)
   public void compareImagesDropdownsMethod2()  {
 	  
-	  
+	
+	
+	
+	
 	driver = getDriver();
 
 	//Amazon object initialization 
@@ -61,8 +72,8 @@ public class Compare_Images_Test extends Drivers  {
 	// Fetching count by respective websites
 
 	amazon.launchAmazonHomepage(driver);
-	setCountofamazondropdowns(amazon.printAmazonDropdownCount(driver));
-	setCountofamazonimages(amazon.printnoofImages(driver));
+	this.countofamazondropdowns = amazon.printAmazonDropdownCount(driver);
+	this.countofamazonimages = amazon.printnoofImages(driver);
 	amazon.closeBrowser(driver);
 	
 	
@@ -71,8 +82,8 @@ public class Compare_Images_Test extends Drivers  {
 	Flipkart_Home_Page flipkart = new Flipkart_Home_Page();
 	
 	flipkart.launchFlipkartHomepage(driver);
-	setCountofflipkartdropdowns(flipkart.printFlipkartDropdownscount(driver));
-	setCountofflipkartimages(flipkart.printNoofImages(driver));
+	this.countofflipkartdropdowns = flipkart.printFlipkartDropdownscount(driver);
+	this.countofflipkartimages = flipkart.printNoofImages(driver);
 	flipkart.closeBrowser(driver);
 	
 		
@@ -101,53 +112,6 @@ public class Compare_Images_Test extends Drivers  {
   }
 
 
-   public int getCountofamazondropdowns() {
-		return countofamazondropdowns;
-	}
-
-  
-
-	public void setCountofamazondropdowns(int countofamazondropdowns) {
-		this.countofamazondropdowns = countofamazondropdowns;
-	}
-
-
-
-	public int getCountofamazonimages() {
-		return countofamazonimages;
-	}
-
-
-
-	public void setCountofamazonimages(int countofamazonimages) {
-		this.countofamazonimages = countofamazonimages;
-	}
-
-
-
-	public int getCountofflipkartdropdowns() {
-		return countofflipkartdropdowns;
-	}
-
-
-
-	public void setCountofflipkartdropdowns(int countofflipkartdropdowns) {
-		this.countofflipkartdropdowns = countofflipkartdropdowns;
-	}
-
-
-
-	public int getCountofflipkartimages() {
-		return countofflipkartimages;
-	}
-
-
-
-	public void setCountofflipkartimages(int countofflipkartimages) {
-		this.countofflipkartimages = countofflipkartimages;
-	}
-
-  
   
 
 }

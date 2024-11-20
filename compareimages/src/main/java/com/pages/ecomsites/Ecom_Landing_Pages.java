@@ -59,7 +59,7 @@ public class Ecom_Landing_Pages extends Drivers{
 	
 	public HashSet<String> amazonimagesrc = new HashSet<>();
 	
-	
+	 
 	
 	public void amazonLandingPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -72,6 +72,10 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		driver.manage().window().maximize();
 		
+	}
+	
+	public int getAmazonSelectDropDown(WebDriver driver) {
+		
 		// Waiter for select tag
 		
 		WebDriverWait dropdownwait = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -79,6 +83,11 @@ public class Ecom_Landing_Pages extends Drivers{
 				
 		List<WebElement> dropdowns = driver.findElements(By.id(select_dropdown_id));
 		driver.findElement(By.id(select_dropdown_id)).click();
+		
+		return dropdowns.size();
+		
+	}
+		public int getAmazonSearchDropDown(WebDriver driver) {
 		
 		// Fetching the count for Search dropdown
 		
@@ -89,7 +98,12 @@ public class Ecom_Landing_Pages extends Drivers{
 		List<WebElement> searchbox = driver.findElements(By.id(searchbox_dropdown_id));
 		driver.findElement(By.xpath("//div[@class='left-pane-results-container']"));
 		
+		return searchbox.size();
 		
+		}
+		
+		public int getAmazonENDropDown(WebDriver driver) {
+			
 		
 		// Waiter for EN division
 		
@@ -104,6 +118,11 @@ public class Ecom_Landing_Pages extends Drivers{
 				
 		List<WebElement> endropdown = driver.findElements(By.xpath(EN_dropdown_xpath));
 		
+		return endropdown.size();
+		}
+		
+		public int getAmazonHelloSigninDropdown(WebDriver driver) {
+			
 		// Waiter for Hello signin division
 		
 		WebDriverWait signinwaiter = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -116,13 +135,21 @@ public class Ecom_Landing_Pages extends Drivers{
 		// Finding the elements having Hello Signin text
 						
 		List<WebElement> signindropdown = driver.findElements(By.xpath(HelloSignIn_dropdown_xpath));
+		
+		return signindropdown.size();
+		}
+		
+		public int printAmazonDropdownCount(WebDriver driver) {
 				
 		// Printing the dropdown and image counts	
 		
-		int totaldropdowncount = dropdowns.size()+endropdown.size()+signindropdown.size()+searchbox.size();
+		int totaldropdowncount = getAmazonSelectDropDown(driver)+getAmazonSearchDropDown(driver) +getAmazonHelloSigninDropdown(driver)+getAmazonENDropDown(driver)+getAmazonHelloSigninDropdown(driver);
 		System.out.println("Number of dropdowns present in Amazon homepage:"+totaldropdowncount);
+		return totaldropdowncount;
 		
+		}
 		
+		public int printAmazonImageCount(WebDriver driver) {
 		
 		List<WebElement> images = driver.findElements(By.tagName("img"));
 		
@@ -137,18 +164,10 @@ public class Ecom_Landing_Pages extends Drivers{
 			
 		}
 		
-		
-		
 		 System.out.println("Number of images in Amazon Home Page :"+""+amazonimagesrc.size());
+		 return amazonimagesrc.size();
+		}
 		 
-	}
-		
-		
-	
-	
-
-
-
 	public void flipkartLandingPage(WebDriver driver) throws IOException {
 		// TODO Auto-generated constructor stub
 		
@@ -160,7 +179,8 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		driver.manage().window().maximize();
 		
-		
+	}
+	public int getFlikartBreadCrumbDropDown(WebDriver driver) {
 		// Fetching the count for breadcrumb
 		
 		WebDriverWait breadcrumb_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -171,8 +191,9 @@ public class Ecom_Landing_Pages extends Drivers{
 		hover_breadcrumb.moveToElement(driver.findElement(By.xpath(breadcrumb_dropdown_xpath))).perform();
 		
 		List<WebElement> breadcrumb_count = driver.findElements(By.xpath(breadcrumb_dropdown_xpath));
-		
-		
+		return breadcrumb_count.size();
+	}
+	public int getFlikartLoginDropDownCount(WebDriver driver) {
 		// Fetching the count for Login dropdown
 		
 		WebDriverWait login_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -183,7 +204,9 @@ public class Ecom_Landing_Pages extends Drivers{
 		hover_Login.moveToElement(driver.findElement(By.xpath(login_dropdown_xpath))).perform();
 		
 		List<WebElement> login_count = driver.findElements(By.xpath(login_dropdown_xpath));
-		
+		return login_count.size();
+	}
+	public int getFlipkartTwoWheelersDropdownCount(WebDriver driver) {
 		
 		// Fetching the count for Two Wheelers dropdown
 		
@@ -195,6 +218,10 @@ public class Ecom_Landing_Pages extends Drivers{
 		hover_two_wheelers.moveToElement(driver.findElement(By.xpath(two_wheelers_dropdown_xpath))).perform();
 				
 		List<WebElement> two_wheelers_count = driver.findElements(By.xpath(two_wheelers_dropdown_xpath));
+		return two_wheelers_count.size();
+		
+	}
+		public int getFlipkartBeautyDropDownCount(WebDriver driver) {
 			
 		// Fetching the count for Beauty, Toys, Category dropdown
 		
@@ -206,7 +233,10 @@ public class Ecom_Landing_Pages extends Drivers{
 		hover_beauty.moveToElement(driver.findElement(By.xpath(beauty_dropdown_xpath))).perform();
 						
 		List<WebElement> beauty_count = driver.findElements(By.xpath(beauty_dropdown_xpath));
-		
+		return beauty_count.size();
+	}
+		public int getFlipkartHomeDropDownCount(WebDriver driver) {
+			
 		// Fetching the count for Home & Furniture dropdown
 		
 		WebDriverWait home_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -217,7 +247,10 @@ public class Ecom_Landing_Pages extends Drivers{
 		hover_home.moveToElement(driver.findElement(By.xpath(home_furniture_xpath))).perform();
 						
 		List<WebElement> home_count = driver.findElements(By.xpath(home_furniture_xpath));
-		
+		return home_count.size();
+		}
+		public int getFlipkartElectronicsDroDownCount(WebDriver driver) {
+			
 		// Fetching the count for Electronics dropdown
 		
 		WebDriverWait electronics_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -228,7 +261,11 @@ public class Ecom_Landing_Pages extends Drivers{
 		hover_electronics.moveToElement(driver.findElement(By.xpath(electronics_xpath))).perform();
 						
 		List<WebElement> electronics_count = driver.findElements(By.xpath(electronics_xpath));
+		return electronics_count.size();
+		}
 		
+		public int getFlipkartFashionDropDownCount(WebDriver driver) {
+			
 		// Fetching the count for Fashion dropdown
 		
 		WebDriverWait fashion_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -239,7 +276,11 @@ public class Ecom_Landing_Pages extends Drivers{
 		hover_fashion.moveToElement(driver.findElement(By.xpath(fashion_xpath))).perform();
 								
 		List<WebElement> fashion_count = driver.findElements(By.xpath(fashion_xpath));
+		return fashion_count.size();
+		}
 		
+		public int getFlipkartSearchDrodownCount(WebDriver driver) {
+			
 		// Fetching the count for Search dropdown
 		
 		WebDriverWait search_waiter = new WebDriverWait(driver,Duration.ofMinutes(1));
@@ -249,20 +290,32 @@ public class Ecom_Landing_Pages extends Drivers{
 		JavascriptExecutor jsexecutor = (JavascriptExecutor) driver;
 		jsexecutor.executeScript("arguments[0].click()", searchbox);
 		searchbox.sendKeys(" ",Keys.BACK_SPACE);
-		
-		
-		
-								
+							
 		Actions hover_search = new Actions(driver);
 								
 		hover_search.moveToElement(driver.findElement(By.xpath(search_dropdown_xpath))).perform();
-								
-		int search_count = driver.findElements(By.xpath(search_dropdown_xpath)).size();
-				
+							
+		List<WebElement> search_count = driver.findElements(By.xpath(search_dropdown_xpath));
+		return search_count.size();
+		}
+		
+		public int getFlipkartDropdownCount(WebDriver driver) {
+			
 		// Printing the dropdown and image counts
 		
-		int totaldropdowncount = breadcrumb_count.size()+login_count.size()+two_wheelers_count.size()+beauty_count.size()+home_count.size()+electronics_count.size()+fashion_count.size()+search_count;		
+		int totaldropdowncount = getFlikartBreadCrumbDropDown(driver)
+				+getFlipkartHomeDropDownCount(driver)
+				+getFlikartLoginDropDownCount(driver)
+				+getFlipkartSearchDrodownCount(driver)
+				+getFlipkartTwoWheelersDropdownCount(driver)
+				+getFlipkartBeautyDropDownCount(driver)
+				+getFlipkartFashionDropDownCount(driver)
+				+getFlipkartElectronicsDroDownCount(driver);		
 		System.out.println("Number of dropdowns present in Flipkart homepage:"+totaldropdowncount);
+		return totaldropdowncount;
+		}
+		
+		public int getFlipkartImageCount(WebDriver driver) {
 		
 		List<WebElement> images = driver.findElements(By.tagName("img"));
 		
@@ -277,12 +330,12 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		
 		System.out.println("Number of images in Flipkart Homepage :"+""+flipkartimagesrc.size());
-		
+		return flipkartimagesrc.size();
 	}
 	
 	
 	
-	public void imageComparision(WebDriver webDriver) {
+	public HashSet<String> imageComparision(WebDriver webDriver) {
 		
 		
 		
@@ -307,6 +360,7 @@ public class Ecom_Landing_Pages extends Drivers{
 		
 		System.out.println("Number of common images between Amazon and Flipkart :"+""+common.size());
 		System.out.println("Common images between Amazon and Flipkart           :"+""+common);
+		return common;
 	}
 
 
